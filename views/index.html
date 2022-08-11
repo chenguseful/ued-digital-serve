@@ -1,0 +1,147 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1,minimun-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telphone=no, email=no" />
+    <title>智慧视频客服</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/GC-ui3.0.0/css/gui.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/mui/css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/tcplayer/tcplayer.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="camera-box">
+            <video id="camera"></video>
+        </div>
+        <video id="container"></video>
+        <div class="wrap-control">
+            <div class="bottom-menu">
+                <div class="bottom-menu-dialog">
+                    <div class="dialog-box">
+                        <span>您好，很高兴为您服务，我可以为您查询话费、查询流量、故障申告、投诉建议等业务，您请说。</span>
+                    </div>
+                </div>
+                <div class="bottom-menu-tab">
+                    <div class="tab-box tab-1 hidden">
+                        <div class="tab-box-tit">基础服务</div>
+                        <button onclick="goStep('5')">业务办理</button>
+                        <button onclick="goStep('2')">业务查询</button>
+                    </div>
+                    <div class="tab-box tab-2 hidden">
+                        <!-- 业务查询模块 -->
+                        <div class="tab-box-tit">业务查询</div>
+                        <button onclick="goStep('3')">话费查询</button>
+                        <button onclick="goStep('4')">流量查询</button>
+                    </div>
+                    <div class="tab-box tab-3 hidden">
+                        <!-- 话费查询模块 -->
+                        <div class="tab-box-tit">话费查询</div>
+                        <div class="tab-cost">
+                            <div class="tab-cost-item">实时话费<span>56.8</span>元</div>
+                            <div class="tab-cost-item">往月欠费<span>0</span>元</div>
+                            <div class="tab-cost-item">可用余额<span>36.8</span>元</div>
+                        </div>
+                    </div>
+                    <div class="tab-box tab-4 hidden">
+                        <!-- 流量查询模块 -->
+                        <div class="tab-box-tit">流量查询</div>
+                        <div class="tab-flow">
+                            <div class="tab-flow-item-1">
+                                <p>已使用</p>
+                                <p><span>17.2</span>GB</p>
+                            </div>
+                            <div class="tab-flow-item-2">
+                                <p>剩余</p>
+                                <p><span>2.8</span>GB</p>
+                            </div>
+                            <div class="tab-flow-item-3">
+                                <div class="tab-prograss"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-box tab-5 hidden">
+                        <!-- 业务办理模块 -->
+                        <div class="tab-box-tit">流量查询</div>
+                        <button onclick="goStep('6')">加流量</button>
+                        <button onclick="goStep('7')">充值缴费</button>
+                        <button onclick="goStep('8')">反馈办理</button>
+                    </div>
+                    <div class="tab-box tab-6 hidden">
+                        <div class="tab-box-tit">加流量</div>
+                        <div class="tab-flow-add">
+                            <div class="tab-flow-add-item">
+                                <div class="tab-flow-add-tit">5G升级包</div>
+                                <p>5G</p>
+                                <p>9.9元/月</p>
+                            </div>
+                            <div class="tab-flow-add-item">
+                                <div class="tab-flow-add-tit">通用流量升级包</div>
+                                <p>2G</p>
+                                <p>2元/月</p>
+                            </div>
+                            <div class="tab-flow-add-item">
+                                <div class="tab-flow-add-tit">定向包</div>
+                                <p>30G</p>
+                                <p>20元/月</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-box tab-7 hidden">
+                        <div class="tab-box-tit">充值缴费</div>
+                        <div class="tab-cost-add">
+                            <span>充值话费</span>
+                            <div class="tab-cost-input">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="tab-cost-add-btn">
+                            <button>10元</button>
+                            <button>20元</button>
+                            <button>50元</button>
+                            <button>100元</button>
+                        </div>
+                    </div>
+                    <div class="tab-box tab-8 hidden">
+                        <!-- 反馈办理模块 -->
+                        <div class="tab-box-tit">反馈办理</div>
+                        <button>故障申告</button>
+                        <button>投诉建议</button>
+                    </div>
+                    <div class="tab-box tab-9 hidden">
+                        <!-- 常见咨询模块 -->
+                        <div class="tab-box-tit">常见咨询</div>
+                        <button>查询本月话费</button>
+                        <button>办理5G流量包</button>
+                        <button>充值缴费</button>
+                        <button>流量剩余查询</button>
+                        <button>故障申告</button>
+                    </div>
+                </div>
+                <div class="bottom-menu-box">
+                    <div class="bottom-menu-item bottom-menu-1"></div>
+                    <div class="bottom-menu-item bottom-menu-2"></div>
+                    <div class="bottom-menu-item bottom-menu-3"></div>
+                </div>
+            </div>
+            <div class="loader-box">
+                <div class="loader"></div>
+                <div class="load-text">连接中</div>
+            </div>
+        </div>
+    </div>
+    <script src="../plugins/jquery-1.10.2.min.js"></script>
+    <script src="../plugins/GC-ui3.0.0/gui.js"></script>
+    <script src="../plugins/mui/js/mui.min.js"></script>
+    <script src="../plugins/tcplayer/TXLivePlayer-1.2.0.min.js"></script>
+    <script src="../plugins/tcplayer/hls.min.0.13.2m.js"></script>
+    <script src="../plugins/tcplayer/flv.min.1.6.2.js"></script>
+    <script src="../plugins/tcplayer/tcplayer.v4.5.2.min.js"></script>
+    <script src="../plugins/crypto-js.min.js"></script>
+    <script src="../js/camera.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>
